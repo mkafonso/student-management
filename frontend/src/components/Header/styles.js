@@ -16,8 +16,9 @@ export const Container = styled.header`
     cursor: pointer;
 
     > img {
-      width: 55px;
-      height: 55px;
+      width: 50px;
+      height: 50px;
+      border: 2px solid var(--background);
       border-radius: 50%;
     }
 

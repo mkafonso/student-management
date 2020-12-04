@@ -7,6 +7,10 @@ export const routesConfig = {
     title: "Estudantes",
     path: "/estudantes",
   },
+  studentsRegister: {
+    title: "Cadastrar Estudante",
+    path: "/estudantes/cadastro",
+  },
   partners: {
     title: "Instituições",
     path: "/instituicoes",

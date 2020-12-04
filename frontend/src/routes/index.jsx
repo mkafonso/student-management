@@ -3,7 +3,8 @@ import { Switch, Route } from "react-router-dom";
 
 // import pages
 import Dashboard from "../pages/Dashboard/Dashboard";
-import StudentList from "../pages/Students/StudentList";
+import StudentsList from "../pages/Students/StudentsList";
+import StudentsRegister from "../pages/Students/StudentsRegister";
 import PartnersList from "../pages/Partners/PartnersList";
 import PartnersRegister from "../pages/Partners/PartnersRegister";
 
@@ -31,12 +32,23 @@ const Routes = () => {
       />
 
       <Route
-        data-test="component-studentList"
+        data-test="component-studentsList"
         exact
         path={routes.students.path}
         component={() => (
           <DefaultLayout>
-            <StudentList />
+            <StudentsList />
+          </DefaultLayout>
+        )}
+      />
+
+      <Route
+        data-test="component-studentsRegister"
+        exact
+        path={routes.studentsRegister.path}
+        component={() => (
+          <DefaultLayout>
+            <StudentsRegister />
           </DefaultLayout>
         )}
       />
@@ -53,7 +65,7 @@ const Routes = () => {
       />
 
       <Route
-        data-test="component-partnersEditr"
+        data-test="component-partnersRegister"
         exact
         path={routes.partnersRegister.path}
         component={() => (

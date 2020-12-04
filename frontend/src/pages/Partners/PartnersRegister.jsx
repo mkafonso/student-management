@@ -69,10 +69,10 @@ const PartnersRegister = () => {
 
             <div className="input-group">
               <input
-                value={name}
+                value={type}
                 type="text"
                 placeholder="Nome da instituição"
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => setType(e.target.value)}
               />
 
               <input
