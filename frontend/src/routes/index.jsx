@@ -4,6 +4,9 @@ import { Switch, Route } from "react-router-dom";
 // import pages
 import Dashboard from "../pages/Dashboard/Dashboard";
 import StudentList from "../pages/Students/StudentList";
+import PartnersList from "../pages/Partners/PartnersList";
+import PartnersRegister from "../pages/Partners/PartnersRegister";
+
 import SignIn from "../pages/SignIn/SignIn";
 
 // import components
@@ -34,6 +37,28 @@ const Routes = () => {
         component={() => (
           <DefaultLayout>
             <StudentList />
+          </DefaultLayout>
+        )}
+      />
+
+      <Route
+        data-test="component-partnersList"
+        exact
+        path={routes.partners.path}
+        component={() => (
+          <DefaultLayout>
+            <PartnersList />
+          </DefaultLayout>
+        )}
+      />
+
+      <Route
+        data-test="component-partnersEditr"
+        exact
+        path={routes.partnersRegister.path}
+        component={() => (
+          <DefaultLayout>
+            <PartnersRegister />
           </DefaultLayout>
         )}
       />

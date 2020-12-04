@@ -11,6 +11,10 @@ export const routesConfig = {
     title: "Instituições",
     path: "/instituicoes",
   },
+  partnersRegister: {
+    title: "Cadastrar Instituição",
+    path: "/instituicoes/cadastro",
+  },
   finances: {
     title: "Financeiro",
     path: "/financeiro",

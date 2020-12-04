@@ -86,7 +86,7 @@ const DashboardTable = () => {
 const Dashboard = () => {
   return (
     <Container>
-      <h1 className="page_title">Estudantes</h1>
+      <h1 className="page_title">Dashboard</h1>
 
       <Content>
         <div>
