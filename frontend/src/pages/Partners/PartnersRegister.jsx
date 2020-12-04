@@ -102,7 +102,7 @@ const PartnersRegister = () => {
 
       <div className="buttons-container">
         <Link to={routesConfig.partners.path}>
-          <button className="salvar-partner">Entrar</button>
+          <button className="salvar-partner">Cadastrar</button>
         </Link>
 
         <Link to={routesConfig.partners.path}>

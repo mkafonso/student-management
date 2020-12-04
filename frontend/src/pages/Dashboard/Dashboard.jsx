@@ -96,7 +96,7 @@ const Dashboard = () => {
           </StudentStatus>
 
           <div className="box-gastos">
-            <h3 className="box-title">Gastors mensais</h3>
+            <h3 className="box-title">Gastos mensais</h3>
             <RadarChartComponent />
           </div>
         </div>
