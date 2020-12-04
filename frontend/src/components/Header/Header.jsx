@@ -8,7 +8,7 @@ import avatar from "../../assets/baby_avatar.jpg";
 const Header = () => {
   return (
     <Container>
-      <div className="header_profile">
+      <div className="header_profile" data-test="component-header">
         <img src={avatar} alt="user avatar" />
         <span>Mr. Baby Boss</span>
       </div>

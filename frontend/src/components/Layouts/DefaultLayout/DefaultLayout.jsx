@@ -11,8 +11,10 @@ import Sidebar from "../../Sidebar/Sidebar";
 const DefaultLayout = (props) => {
   const { children } = props;
 
+  if (!children) return;
+
   return (
-    <Container>
+    <Container data-test="defaultLayout">
       <Header />
       <Sidebar />
       <Content>{children}</Content>
@@ -29,7 +31,7 @@ DefaultLayout.propTypes = {
     PropTypes.element,
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.element),
-  ]),
+  ]).isRequired,
 };
 
 export default DefaultLayout;

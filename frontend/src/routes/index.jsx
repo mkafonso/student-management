@@ -15,6 +15,7 @@ const Routes = () => {
   return (
     <Switch>
       <Route
+        data-test="component-dashboard"
         exact
         path={routes.root.path}
         component={() => (
@@ -25,6 +26,7 @@ const Routes = () => {
       />
 
       <Route
+        data-test="component-studentList"
         exact
         path={routes.students.path}
         component={() => (
