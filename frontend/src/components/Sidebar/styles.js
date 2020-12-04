@@ -22,10 +22,6 @@ export const Container = styled.aside`
     align-items: center;
     justify-content: center;
   }
-`;
-
-export const MenuOptions = styled.div`
-  margin-top: 20px;
 
   .menu-item {
     padding-bottom: 30px;
@@ -43,4 +39,12 @@ export const MenuOptions = styled.div`
     cursor: pointer;
     margin-left: 10px;
   }
+
+  .exit {
+    margin-top: 15px;
+  }
+`;
+
+export const MenuOptions = styled.div`
+  margin-top: 20px;
 `;

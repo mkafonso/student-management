@@ -70,7 +70,7 @@ export const Filters = styled.div`
   > input {
     width: 300px;
     height: 45px;
-    border: 2px solid var(--secondary);
+    border: 1px solid var(--secondary);
     border-radius: 5px;
     padding: 3px 10px;
     font-size: 18px;

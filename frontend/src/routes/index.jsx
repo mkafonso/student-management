@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 
 // import pages
 import Dashboard from "../pages/Dashboard/Dashboard";
+import NotFound from "../pages/NotFound/NotFound";
 import StudentsList from "../pages/Students/StudentsList";
 import StudentsRegister from "../pages/Students/StudentsRegister";
 import PartnersList from "../pages/Partners/PartnersList";
@@ -91,7 +92,7 @@ const Routes = () => {
         path="/*"
         component={() => (
           <DefaultLayout>
-            <h1>Not Found</h1>
+            <NotFound />
           </DefaultLayout>
         )}
       />

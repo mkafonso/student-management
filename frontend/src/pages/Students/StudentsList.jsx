@@ -102,10 +102,10 @@ const DashboardTable = () => {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Nome</StyledTableCell>
-            <StyledTableCell align="left">Tipo</StyledTableCell>
-            <StyledTableCell align="left">Website</StyledTableCell>
-            <StyledTableCell align="left">Contato</StyledTableCell>
+            <StyledTableCell>Imagem</StyledTableCell>
+            <StyledTableCell align="left">Nome</StyledTableCell>
+            <StyledTableCell align="left">Curso</StyledTableCell>
+            <StyledTableCell align="left">Status</StyledTableCell>
             <StyledTableCell align="left"></StyledTableCell>
           </TableRow>
         </TableHead>

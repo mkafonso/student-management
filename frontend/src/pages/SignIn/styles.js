@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
 export const LoginForm = styled.form`
+  > h2 {
+    margin: 20px 0;
+    text-align: center;
+    color: var(--secondary);
+  }
+
   .form-group {
     display: flex;
     flex-direction: column;
@@ -39,8 +45,12 @@ export const LoginForm = styled.form`
 
   > span {
     color: var(--secondary);
-    cursor: pointer;
     margin-top: 15px;
     display: inline-block;
+
+    > a {
+      color: var(--terciary);
+      margin-left: 8px;
+    }
   }
 `;

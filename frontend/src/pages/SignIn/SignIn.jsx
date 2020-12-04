@@ -17,6 +17,8 @@ const SignIn = () => {
 
   return (
     <LoginForm onSubmit={handleLoginForm}>
+      <h2>BASE DE DADOS</h2>
+
       <div className="form-group">
         <input
           value={email}
@@ -37,7 +39,11 @@ const SignIn = () => {
       </Link>
 
       <br />
-      <span>Não tem conta? Faça o cadastro aqui</span>
+
+      <span>
+        Não tem conta?
+        <Link to="/login-usuario">Faça o cadastro aqui</Link>
+      </span>
     </LoginForm>
   );
 };

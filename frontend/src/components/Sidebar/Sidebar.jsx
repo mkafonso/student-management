@@ -9,13 +9,17 @@ import {
   MdAttachMoney,
   MdInsertChart,
   MdSettings,
+  MdExitToApp,
 } from "react-icons/md";
 
 // import styles
 import { Container, MenuOptions } from "./styles";
 
 // import components
-import Separator from "../Separator/Separator";
+import Separator from "../../commons/Separator";
+
+// import libs
+import { routesConfig } from "../../lib/routes";
 
 const Sidebar = () => {
   return (
@@ -91,6 +95,17 @@ const Sidebar = () => {
           </Link>
         </div>
       </MenuOptions>
+
+      <Separator />
+
+      <div className="menu-item exit">
+        <Link to={routesConfig.signIn.path}>
+          <button type="button" className="menu-item_option">
+            <MdExitToApp className="menu-item_icon" size={24} color="#4D4C59" />
+            <span className="menu-item_label">Sair</span>
+          </button>
+        </Link>
+      </div>
 
       <footer className="sidebar-footer">made with 💚 by TechLab</footer>
     </Container>

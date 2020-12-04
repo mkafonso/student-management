@@ -139,7 +139,7 @@ const PartnersList = () => {
         </button>
       </Link>
 
-      <DashboardTable />
+      <DashboardTable className="partners-table" />
     </Container>
   );
 };

@@ -26,9 +26,9 @@ export const Container = styled.div`
     background: var(--terciary);
     color: var(--background);
     cursor: pointer;
-
-    margin: 15px 0;
+    width: 200px;
     height: 45px;
+    margin: 15px 0 35px 0;
     padding: 10px 25px;
     border-radius: 5px;
 

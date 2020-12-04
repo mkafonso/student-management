@@ -60,9 +60,9 @@ const DashboardTable = () => {
         <TableHead>
           <TableRow>
             <StyledTableCell>Nome</StyledTableCell>
-            <StyledTableCell align="right">Documento</StyledTableCell>
-            <StyledTableCell align="right">Vencimento</StyledTableCell>
-            <StyledTableCell align="right"></StyledTableCell>
+            <StyledTableCell align="left">Documento</StyledTableCell>
+            <StyledTableCell align="left">Vencimento</StyledTableCell>
+            <StyledTableCell align="left"></StyledTableCell>
           </TableRow>
         </TableHead>
 
@@ -72,9 +72,9 @@ const DashboardTable = () => {
               <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+              <StyledTableCell align="left">{row.calories}</StyledTableCell>
+              <StyledTableCell align="left">{row.fat}</StyledTableCell>
+              <StyledTableCell align="left">{row.carbs}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
