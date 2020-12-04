@@ -23,6 +23,10 @@ export const routesConfig = {
     title: "Configurações",
     path: "/configuracoes",
   },
+  signIn: {
+    title: "Login",
+    path: "/login-usuario",
+  },
 };
 
 export const getTitleByPath = (path) => {

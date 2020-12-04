@@ -24,4 +24,13 @@ describe("<Routes />", () => {
 
     component.unmount();
   });
+
+  it("should render SignIn component", () => {
+    const wrapper = shallow(<Routes />);
+    const component = findByTestAttr(wrapper, "component-signIn");
+
+    expect(component).toHaveLength(1);
+
+    component.unmount();
+  });
 });

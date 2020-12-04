@@ -4,9 +4,11 @@ import { Switch, Route } from "react-router-dom";
 // import pages
 import Dashboard from "../pages/Dashboard/Dashboard";
 import StudentList from "../pages/Students/StudentList";
+import SignIn from "../pages/SignIn/SignIn";
 
 // import components
 import DefaultLayout from "../components/Layouts/DefaultLayout/DefaultLayout";
+import ExternalLayout from "../components/Layouts/ExternalLayout/ExternalLayout";
 
 // import libs
 import routes from "../lib/routes";
@@ -33,6 +35,17 @@ const Routes = () => {
           <DefaultLayout>
             <StudentList />
           </DefaultLayout>
+        )}
+      />
+
+      <Route
+        data-test="component-signIn"
+        exact
+        path={routes.signIn.path}
+        component={() => (
+          <ExternalLayout>
+            <SignIn />
+          </ExternalLayout>
         )}
       />
 

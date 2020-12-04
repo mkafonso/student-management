@@ -60,4 +60,14 @@ describe("routesConfig", () => {
       expect(routesConfig.settings.path).toEqual("/configuracoes");
     });
   });
+
+  describe("signIn", () => {
+    it('should contain an attribute title with value equal to "Login"', () => {
+      expect(routesConfig.signIn.title).toEqual("Login");
+    });
+
+    it('should contain an attribute path with value equal to "/login-usuario"', () => {
+      expect(routesConfig.signIn.path).toEqual("/login-usuario");
+    });
+  });
 });
