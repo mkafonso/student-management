@@ -13,7 +13,7 @@ export const LoginForm = styled.form`
       padding: 3px 10px;
 
       &:focus {
-        border: 1px solid var(--success);
+        border: 1px solid var(--terciary);
       }
 
       & + input {
@@ -22,13 +22,12 @@ export const LoginForm = styled.form`
     }
   }
 
-  > button {
+  .login-btn {
     margin-top: 15px;
-
     width: 350px;
     height: 45px;
     border-radius: 5px;
-    background: var(--success);
+    background: var(--terciary);
     color: var(--background);
     font-size: 18px;
     cursor: pointer;
@@ -36,5 +35,12 @@ export const LoginForm = styled.form`
     &:hover {
       filter: brightness(95%);
     }
+  }
+
+  > span {
+    color: var(--secondary);
+    cursor: pointer;
+    margin-top: 15px;
+    display: inline-block;
   }
 `;

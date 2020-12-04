@@ -1,15 +1,41 @@
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import React from "react";
 import PropTypes from "prop-types";
+import Slider from "react-slick";
 
 // import styles
 import { Container, Content } from "./styles";
+
+// import imgs
+import bg2 from "../../../assets/bg2.png";
+
+export const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  // autoplay: true,
+  autoplaySpeed: 1000,
+};
 
 const ExternalLayout = (props) => {
   const { children } = props;
 
   return (
     <Container>
-      <div className="external-details"></div>
+      <div className="external-details">
+        <Slider {...settings}>
+          <div className="slider-item">
+            <img src={bg2} alt="bg1" />
+          </div>
+          <div className="slider-item">
+            <img src={bg2} alt="bg2" />
+          </div>
+        </Slider>
+      </div>
 
       <Content>{children}</Content>
     </Container>

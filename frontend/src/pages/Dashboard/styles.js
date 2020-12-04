@@ -4,6 +4,15 @@ export const Container = styled.div`
   .page_title {
     margin-bottom: 25px;
   }
+
+  .MuiTableCell-head {
+    background: var(--secondary) !important;
+    color: white !important;
+  }
+
+  .MuiTableCell-body {
+    color: var(--secondary) !important;
+  }
 `;
 
 export const Content = styled.div`

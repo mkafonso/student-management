@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 // import styles
 import { LoginForm } from "./styles";
@@ -10,6 +11,8 @@ const SignIn = () => {
   const handleLoginForm = (e) => {
     e.preventDefault();
     console.log(email, password);
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -28,7 +31,13 @@ const SignIn = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <button>Entrar</button>
+
+      <Link to="/">
+        <button className="login-btn">Entrar</button>
+      </Link>
+
+      <br />
+      <span>Não tem conta? Faça o cadastro aqui</span>
     </LoginForm>
   );
 };

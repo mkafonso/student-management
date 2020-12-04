@@ -9,12 +9,23 @@ export const Container = styled.div`
 
   .external-details {
     min-width: 500px;
+    max-width: 500px;
     height: 96%;
     border-radius: 25px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: var(--background);
-    background: orange;
+    background-color: var(--terciary);
     margin: 0 32px;
+  }
+
+  .slider-item {
+    height: 92vh !important;
+
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 25px;
+    }
   }
 `;
 
