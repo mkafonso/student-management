@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 // import styles
 import { LoginForm } from "./styles";
 
+// import services
+import { signInWithGoogle } from "../../services/firebase/firebase.utils";
+
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,6 +39,12 @@ const SignIn = () => {
 
       <Link to="/">
         <button className="login-btn">Entrar</button>
+      </Link>
+      <br />
+      <Link to="#">
+        <button onClick={signInWithGoogle} className="login-btn">
+          Google
+        </button>
       </Link>
 
       <br />

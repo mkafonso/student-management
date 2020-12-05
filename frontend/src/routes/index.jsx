@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 
 // import pages
@@ -18,7 +18,22 @@ import ExternalLayout from "../components/Layouts/ExternalLayout/ExternalLayout"
 // import libs
 import routes from "../lib/routes";
 
+// import services
+import { auth } from "../services/firebase/firebase.utils";
+
 const Routes = () => {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setCurrentUser(user);
+      }
+    });
+  }, [currentUser]);
+
+  console.log(currentUser);
+
   return (
     <Switch>
       <Route
