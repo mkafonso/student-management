@@ -44,5 +44,17 @@ export default createGlobalStyle`
     --success: #7cd27b;
     --error: #f9826c;
     --pending: #e59d27;
+
+/* ==============================
+    Deletar as cores de baixo? ...talvez?
+*/
+
+    --primary: #1b1f23;
+    --secondary: #4D4D4D;
+    --terciary: #f9826c;
+
+    --success: #7cd27b;
+    --error: #f9826c;
+    --pending: #e59d27;
   }
 `;

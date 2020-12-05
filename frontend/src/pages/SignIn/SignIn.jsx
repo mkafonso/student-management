@@ -1,21 +1,28 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
 // import styles
 import { LoginForm } from "./styles";
 
 // import services
-import { signInWithGoogle } from "../../services/firebase/firebase.utils";
+import { auth, signInWithGoogle } from "../../services/firebase/firebase.utils";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLoginForm = (e) => {
-    e.preventDefault();
-    console.log(email, password);
-    setEmail("");
-    setPassword("");
+  const handleLoginForm = async (e) => {
+    // e.preventDefault();
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setEmail("");
+      setPassword("");
+    }
   };
 
   return (
@@ -42,7 +49,8 @@ const SignIn = () => {
       </Link>
       <br />
       <Link to="#">
-        <button onClick={signInWithGoogle} className="login-btn">
+        <button onClick={signInWithGoogle} className="login-btn google">
+          <FcGoogle />
           Google
         </button>
       </Link>

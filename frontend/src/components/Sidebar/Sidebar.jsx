@@ -21,6 +21,9 @@ import Separator from "../../commons/Separator";
 // import libs
 import { routesConfig } from "../../lib/routes";
 
+// import services
+import { auth } from "../../services/firebase/firebase.utils";
+
 const Sidebar = () => {
   return (
     <Container>
@@ -100,7 +103,11 @@ const Sidebar = () => {
 
       <div className="menu-item exit">
         <Link to={routesConfig.signIn.path}>
-          <button type="button" className="menu-item_option">
+          <button
+            type="button"
+            className="menu-item_option"
+            onClick={() => auth.signOut()}
+          >
             <MdExitToApp className="menu-item_icon" size={24} color="#4D4C59" />
             <span className="menu-item_label">Sair</span>
           </button>

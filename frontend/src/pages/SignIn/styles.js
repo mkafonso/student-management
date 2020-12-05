@@ -43,6 +43,18 @@ export const LoginForm = styled.form`
     }
   }
 
+  .google {
+    background: #4285f4;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > svg {
+      margin-right: 10px;
+    }
+  }
+
   > span {
     color: var(--secondary);
     margin-top: 15px;

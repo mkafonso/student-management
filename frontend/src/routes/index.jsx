@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 // import pages
 import Dashboard from "../pages/Dashboard/Dashboard";
@@ -19,20 +20,38 @@ import ExternalLayout from "../components/Layouts/ExternalLayout/ExternalLayout"
 import routes from "../lib/routes";
 
 // import services
-import { auth } from "../services/firebase/firebase.utils";
+import {
+  auth,
+  createUserProfileDocument,
+} from "../services/firebase/firebase.utils";
+
+// import actions
+import { setCurrentUser } from "../reducers/user/user.actions";
 
 const Routes = () => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+
+  const {
+    user: { currentUser },
+  } = state;
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        setCurrentUser(user);
+    auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+
+        userRef.onSnapshot((snapshot) => {
+          const user = {
+            id: snapshot.id,
+            ...snapshot.data(),
+          };
+
+          dispatch(setCurrentUser(user));
+        });
       }
     });
-  }, [currentUser]);
-
-  console.log(currentUser);
+  }, []);
 
   return (
     <Switch>
@@ -95,11 +114,15 @@ const Routes = () => {
         data-test="component-signIn"
         exact
         path={routes.signIn.path}
-        component={() => (
-          <ExternalLayout>
-            <SignIn />
-          </ExternalLayout>
-        )}
+        render={() =>
+          currentUser ? (
+            <Redirect to="/" />
+          ) : (
+            <ExternalLayout>
+              <SignIn />
+            </ExternalLayout>
+          )
+        }
       />
 
       <Route
