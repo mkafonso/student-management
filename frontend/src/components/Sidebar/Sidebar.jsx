@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 // import icons
 import {
@@ -25,8 +26,12 @@ import { routesConfig } from "../../lib/routes";
 // import services
 import { auth } from "../../services/firebase/firebase.utils";
 
+// import actions
+import { clearCurrentUser } from "../../reducers/user/user.actions";
+
 const Sidebar = (props) => {
   const { history } = props;
+  const dispatch = useDispatch();
 
   return (
     <Container>
@@ -111,7 +116,7 @@ const Sidebar = (props) => {
             className="menu-item_option"
             onClick={() => {
               auth.signOut();
-              history.push(routesConfig.signIn.path);
+              dispatch(clearCurrentUser());
             }}
           >
             <MdExitToApp className="menu-item_icon" size={24} color="#4D4C59" />
