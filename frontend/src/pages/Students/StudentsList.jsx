@@ -45,10 +45,12 @@ const rows = [
   createData(
     <img
       className="user-img"
-      src={"https://assets.stickpng.com/thumbs/58b1702a102ddecdee0dd039.png"}
+      src={
+        "https://static.wikia.nocookie.net/dreamworks/images/8/82/Staci.jpg/revision/latest/top-crop/width/360/height/360?cb=20170503150037"
+      }
       alt="Mr. baby Boss"
     />,
-    <h3>Mr. Baby Boss</h3>,
+    <h3>Ms. Stacy</h3>,
     <h3>Engenharia de software</h3>,
     "Ativo",
     "view"

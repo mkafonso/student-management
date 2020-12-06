@@ -34,6 +34,10 @@ export default createGlobalStyle`
     color: var(----secondary);
   }
 
+  .Toastify__toast--success {
+    background: var(--terciary) !important;
+  }
+
   :root {
     --background: #f3f5f8;
 

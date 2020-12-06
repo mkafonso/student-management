@@ -51,7 +51,7 @@ const Routes = () => {
         });
       }
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <Switch>

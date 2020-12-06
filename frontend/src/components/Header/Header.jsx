@@ -16,7 +16,7 @@ const Header = () => {
     <Container>
       <div className="header_profile" data-test="component-header">
         <img src={avatar} alt="user avatar" />
-        <span>Mr. {currentUser.displayName}</span>
+        <span>Mr. {currentUser ? currentUser.displayName : ""}</span>
       </div>
     </Container>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { ToastContainer, toast } from "react-toastify";
 
 // import styles
 import { LoginForm } from "./styles";
@@ -11,6 +12,8 @@ import { auth, signInWithGoogle } from "../../services/firebase/firebase.utils";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const notify = () => toast.success("Wow so easy !");
 
   const handleLoginForm = async (e) => {
     // e.preventDefault();
@@ -24,6 +27,8 @@ const SignIn = () => {
       setPassword("");
     }
   };
+
+  <ToastContainer />;
 
   return (
     <LoginForm onSubmit={handleLoginForm}>
@@ -44,7 +49,7 @@ const SignIn = () => {
         />
       </div>
 
-      <Link to="/">
+      <Link to="#" onClick={notify}>
         <button className="login-btn">Entrar</button>
       </Link>
       <br />
