@@ -32,6 +32,21 @@ export const Container = styled.div`
     color: var(--background);
     margin-left: 15px;
   }
+
+  .user-actions {
+    display: flex;
+    align-items: center;
+
+    li {
+      list-style: none;
+      font-size: 22px;
+      cursor: pointer;
+
+      & + li {
+        margin-left: 20px;
+      }
+    }
+  }
 `;
 
 export const Filters = styled.div`
@@ -93,8 +108,17 @@ export const MainContent = styled.div`
   .upload-img {
     width: 200px;
     height: 200px;
-    background: var(--error);
+    border: 2px solid var(--error);
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > img {
+      width: 197px;
+      height: 196px;
+      object-fit: contain;
+    }
   }
 
   .upload-link {
@@ -102,6 +126,11 @@ export const MainContent = styled.div`
     text-decoration: underline;
     padding: 8px 0 14px 0;
     display: inline-block;
+    cursor: pointer;
+  }
+
+  #image-upload[type="file"] {
+    display: none;
   }
 
   .form-group {
@@ -130,6 +159,29 @@ export const MainContent = styled.div`
         margin-top: 15px;
       }
     }
+  }
+
+  .hometown {
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+
+  .birthday-input {
+    min-width: 450px;
+    width: 100%;
+    height: 45px !important;
+    border: 1px solid var(--secondary);
+    border-radius: 5px;
+    padding: 3px 10px;
+    margin: 20px 0;
+
+    &:focus {
+      border: 2px solid var(--terciary) !important;
+    }
+  }
+
+  .gender-input {
+    margin-bottom: 20px;
   }
 `;
 
@@ -179,6 +231,14 @@ export const StudiesContent = styled.div`
   width: 100%;
   min-height: 210px;
   padding: 20px;
+
+  .period {
+    margin-top: 15px;
+  }
+
+  .course {
+    margin-bottom: 15px;
+  }
 
   .form-group {
     margin-top: 20px;
@@ -243,6 +303,23 @@ export const HealthContent = styled.div`
       & + input {
         margin-top: 15px;
       }
+    }
+  }
+
+  .textarea-group {
+    width: 100%;
+  }
+
+  .historyDisease {
+    margin-top: 15px;
+    width: 100%;
+    min-height: 80px;
+    padding: 10px;
+    border: 1px solid var(--secondary);
+    border-radius: 5px;
+
+    &:focus {
+      border: 1px solid var(--terciary);
     }
   }
 `;

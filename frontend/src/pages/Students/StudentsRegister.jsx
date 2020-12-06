@@ -1,5 +1,9 @@
+import "react-datepicker/dist/react-datepicker.css";
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import Select from "react-select";
 
 // import styles
 import {
@@ -13,10 +17,64 @@ import {
 // import libs
 import { routesConfig } from "../../lib/routes";
 
+const countriesValues = [
+  { value: "argentina", label: "Argentina" },
+  { value: "brasil", label: "Brasil" },
+  { value: "china", label: "China" },
+];
+
+const statusValues = [
+  { value: "ativo", label: "Ativo" },
+  { value: "desistente", label: "Desistente" },
+  { value: "finalista", label: "Finalista" },
+];
+
+const personWithDisabilityValues = [
+  { value: "sim", label: "Sim" },
+  { value: "nao", label: "Não" },
+];
+
+const courseValues = [
+  { value: "engenharia-da-computacao", label: "Engenharia da computação" },
+  { value: "engenharia-da-producao", label: "Engenharia da produção" },
+];
+
+const universityValues = [
+  { value: "unasp-ec", label: "UNASP-EC" },
+  { value: "unasp-sp", label: "UNASP-SP" },
+];
+
+const periodValues = [
+  { value: "1", label: "1° período" },
+  { value: "2", label: "2° período" },
+  { value: "3", label: "3° período" },
+  { value: "4", label: "4° período" },
+];
+
+const bloodGroupValues = [
+  { value: "a+", label: "A+" },
+  { value: "a-", label: "A-" },
+  { value: "B+", label: "B+" },
+  { value: "B-", label: "B-" },
+  { value: "AB+", label: "AB+" },
+  { value: "AB-", label: "AB-" },
+  { value: "O+", label: "O+" },
+  { value: "O-", label: "O-" },
+];
+
+const genderValues = [
+  { value: "masculino", label: "Masculino" },
+  { value: "feminino", label: "Feminino" },
+  { value: "outro", label: "Outro" },
+];
+
 const StudentsRegister = () => {
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
-  const [birthday, setBirthday] = useState("");
+  const [profileImage, setProfileImage] = useState(
+    "https://img.pngio.com/the-boss-baby-art-boss-baby-em-2049-aniversario-do-chefe-boss-baby-transparent-400_657.png"
+  );
+  const [birthday, setBirthday] = useState(null);
   const [gender, setGender] = useState("");
   const [contact, setContact] = useState("");
   const [email, setEmail] = useState("");
@@ -26,13 +84,49 @@ const StudentsRegister = () => {
   const [visaExpireDate, setVisaExpireDate] = useState("");
   const [hometown, setHometown] = useState("");
   const [course, setCourse] = useState("");
-  const [studentStatus, setstudentStatus] = useState("");
+  const [studentStatus, setStudentStatus] = useState(null);
   const [university, setUniversity] = useState("");
   const [period, setPeriod] = useState("");
+  const [countryAbroad, setCountryAbroad] = useState("");
   const [bloodGroup, setBloodGroup] = useState("");
-  const [allergies, setAllergies] = useState("");
   const [personWithDisability, setPersonWithDisability] = useState("");
   const [historyDisease, setHistoryDisease] = useState("");
+
+  const profileImageHandler = (e) => {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setProfileImage(reader.result);
+      }
+    };
+
+    reader.readAsDataURL(e.target.files[0]);
+  };
+
+  const handleSubmit = () => {
+    console.log(
+      name,
+      nickname,
+      profileImage,
+      birthday,
+      gender,
+      contact,
+      email,
+      passport,
+      passportExpireDate,
+      visa,
+      visaExpireDate,
+      hometown,
+      course,
+      studentStatus,
+      university,
+      period,
+      bloodGroup,
+      personWithDisability,
+      historyDisease
+    );
+  };
 
   return (
     <Container>
@@ -57,30 +151,33 @@ const StudentsRegister = () => {
               onChange={(e) => setNickname(e.target.value)}
             />
 
-            <input
-              value={birthday}
-              type="text"
-              placeholder="Nascimento"
-              onChange={(e) => setBirthday(e.target.value)}
+            <DatePicker
+              placeholderText="Nascimento"
+              className="birthday-input"
+              selected={birthday}
+              maxDate={new Date()}
+              locale="pt-BR"
+              onChange={(date) => setBirthday(date)}
             />
 
-            <input
-              value={gender}
-              type="text"
+            <Select
+              defaultValue={gender}
+              onChange={(e) => setGender(e.value)}
+              options={genderValues}
               placeholder="Sexo"
-              onChange={(e) => setGender(e.target.value)}
+              className="gender-input"
             />
 
             <input
               value={contact}
               type="text"
-              placeholder="WhatsApp"
+              placeholder="WhatsApp + DDI"
               onChange={(e) => setContact(e.target.value)}
             />
 
             <input
               value={email}
-              type="text"
+              type="email"
               placeholder="E-mail"
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -88,10 +185,19 @@ const StudentsRegister = () => {
 
           <div className="input-group">
             <div className="upload">
-              <div className="upload-img"></div>
-              <Link className="upload-link" to="#">
+              <div className="upload-img">
+                {profileImage && <img src={profileImage} alt="user profile" />}
+              </div>
+              <input
+                type="file"
+                name="image-upload"
+                id="image-upload"
+                accept="image/*"
+                onChange={profileImageHandler}
+              />
+              <label className="upload-link" htmlFor="image-upload">
                 Adicionar Foto
-              </Link>
+              </label>
             </div>
 
             <input
@@ -99,13 +205,14 @@ const StudentsRegister = () => {
               type="text"
               placeholder="Cidade Natal"
               onChange={(e) => setHometown(e.target.value)}
+              className="hometown"
             />
 
-            <input
-              value={studentStatus}
-              type="text"
-              placeholder="Status"
-              onChange={(e) => setstudentStatus(e.target.value)}
+            <Select
+              defaultValue={studentStatus}
+              onChange={(e) => setStudentStatus(e.value)}
+              options={statusValues}
+              placeholder="Status do estudante"
             />
           </div>
         </div>
@@ -154,34 +261,36 @@ const StudentsRegister = () => {
 
         <div className="form-group">
           <div className="input-group">
-            <input
-              value={course}
-              type="text"
+            <Select
+              defaultValue={course}
+              onChange={(e) => setCourse(e.value)}
+              options={courseValues}
               placeholder="Curso"
-              onChange={(e) => setCourse(e.target.value)}
+              className="course"
             />
 
-            <input
-              value={university}
-              type="text"
+            <Select
+              defaultValue={university}
+              onChange={(e) => setUniversity(e.value)}
+              options={universityValues}
               placeholder="Instituição"
-              onChange={(e) => setUniversity(e.target.value)}
             />
           </div>
 
           <div className="input-group">
-            <input
-              value={studentStatus}
-              type="text"
-              placeholder="Status"
-              onChange={(e) => setstudentStatus(e.target.value)}
+            <Select
+              defaultValue={countryAbroad}
+              onChange={(e) => setCountryAbroad(e.value)}
+              options={countriesValues}
+              placeholder="País no estrangeiro"
             />
 
-            <input
-              value={period}
-              type="text"
+            <Select
+              defaultValue={period}
+              onChange={(e) => setPeriod(e.value)}
+              options={periodValues}
               placeholder="Período na faculdade"
-              onChange={(e) => setPeriod(e.target.value)}
+              className="period"
             />
           </div>
         </div>
@@ -192,34 +301,31 @@ const StudentsRegister = () => {
 
         <div className="form-group">
           <div className="input-group">
-            <input
-              value={bloodGroup}
-              type="text"
+            <Select
+              defaultValue={bloodGroup}
+              onChange={(e) => setBloodGroup(e.value)}
+              options={bloodGroupValues}
               placeholder="Grupo Sanguíneo"
-              onChange={(e) => setBloodGroup(e.target.value)}
-            />
-
-            <input
-              value={allergies}
-              type="text"
-              placeholder="Possui alguma alergia"
-              onChange={(e) => setAllergies(e.target.value)}
             />
           </div>
 
           <div className="input-group">
-            <input
-              value={personWithDisability}
-              type="text"
+            <Select
+              defaultValue={personWithDisability}
+              onChange={(e) => setPersonWithDisability(e.value)}
+              options={personWithDisabilityValues}
               placeholder="Pessoa com deficiência?"
-              onChange={(e) => setPersonWithDisability(e.target.value)}
             />
+          </div>
+        </div>
 
-            <input
+        <div className="form-group">
+          <div className="textarea-group">
+            <textarea
               value={historyDisease}
-              type="text"
-              placeholder="Algum problema de saúde que precisa nos contar?"
               onChange={(e) => setHistoryDisease(e.target.value)}
+              className="historyDisease"
+              placeholder="Algum problema de saúde que precisa nos contar?"
             />
           </div>
         </div>
@@ -227,7 +333,9 @@ const StudentsRegister = () => {
 
       <div className="buttons-container">
         <Link to={routesConfig.students.path}>
-          <button className="salvar-student">Cadastrar</button>
+          <button className="salvar-student" onClick={handleSubmit}>
+            Cadastrar
+          </button>
         </Link>
 
         <Link to={routesConfig.students.path}>

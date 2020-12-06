@@ -32,7 +32,7 @@ const Routes = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    auth.onAuthStateChanged(async (userAuth) => {
+    const unsubscribe = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
@@ -45,6 +45,10 @@ const Routes = () => {
           dispatch(setCurrentUser(user));
         });
       }
+
+      return () => {
+        unsubscribe();
+      };
     });
   }, [dispatch]);
 

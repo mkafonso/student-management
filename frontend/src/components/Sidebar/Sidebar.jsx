@@ -30,7 +30,6 @@ import { auth } from "../../services/firebase/firebase.utils";
 import { clearCurrentUser } from "../../reducers/user/user.actions";
 
 const Sidebar = (props) => {
-  const { history } = props;
   const dispatch = useDispatch();
 
   return (
@@ -125,7 +124,7 @@ const Sidebar = (props) => {
         </Link>
       </div>
 
-      <footer className="sidebar-footer">made with 💚 by TechLab</footer>
+      <footer className="sidebar-footer">Version 1.0.0</footer>
     </Container>
   );
 };

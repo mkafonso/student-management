@@ -30,12 +30,29 @@ export default createGlobalStyle`
     text-decoration: none;
   }
 
+  input,textarea {
+    font-size: 16px;
+  }
+
   span, p ,a, svg {
     color: var(----secondary);
   }
 
   .Toastify__toast--success {
     background: var(--terciary) !important;
+  }
+
+  .css-2b097c-container {
+    width: 450px !important;
+    min-width: 450px !important;
+  }
+
+  .css-yk16xz-control {
+    width: 450px !important;
+    min-width: 450px !important;
+    border: 1px solid var(--secondary) !important;
+    border-radius: 5px;
+    padding: 3px 0;
   }
 
   :root {

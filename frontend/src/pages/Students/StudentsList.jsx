@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MdAdd } from "react-icons/md";
+import { MdAdd, MdSearch, MdVisibility } from "react-icons/md";
 
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -43,17 +43,18 @@ function createData(name, calories, fat, carbs, protein) {
 
 const rows = [
   createData(
-    <img
-      className="user-img"
-      src={
-        "https://static.wikia.nocookie.net/dreamworks/images/8/82/Staci.jpg/revision/latest/top-crop/width/360/height/360?cb=20170503150037"
-      }
-      alt="Mr. baby Boss"
-    />,
+    <img className="user-img" src={avatar} alt="Mr. baby Boss" />,
     <h3>Ms. Stacy</h3>,
     <h3>Engenharia de software</h3>,
     "Ativo",
-    "view"
+    <ul className="user-actions">
+      <li>
+        <MdSearch />
+      </li>
+      <li>
+        <MdVisibility />
+      </li>
+    </ul>
   ),
   createData(
     <img
@@ -66,27 +67,14 @@ const rows = [
     <h3>Mr. Baby Boss</h3>,
     <h3>Engenharia de software</h3>,
     "Ativo",
-    "view"
-  ),
-  createData(
-    <img
-      className="user-img"
-      src={
-        "https://i.pinimg.com/originals/41/2a/12/412a12f5581125fcc2db2a707b0c7d5f.png"
-      }
-      alt="Mr. baby Boss"
-    />,
-    <h3>Mr. Baby Boss</h3>,
-    <h3>Engenharia de software</h3>,
-    "Ativo",
-    "view"
-  ),
-  createData(
-    <img className="user-img" src={avatar} alt="Mr. baby Boss" />,
-    <h3>Mr. Baby Boss</h3>,
-    <h3>Engenharia de software</h3>,
-    "Ativo",
-    "view"
+    <ul className="user-actions">
+      <li>
+        <MdSearch />
+      </li>
+      <li>
+        <MdVisibility />
+      </li>
+    </ul>
   ),
 ];
 

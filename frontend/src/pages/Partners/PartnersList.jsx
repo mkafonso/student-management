@@ -55,37 +55,6 @@ const rows = [
     "+55 11 957944107",
     "view"
   ),
-
-  createData(
-    "UNASP",
-    "Privada",
-    "www.unasp.com.br",
-    "+55 11 957944107",
-    "view"
-  ),
-  createData(
-    "UNASP",
-    "Privada",
-    "www.unasp.com.br",
-    "+55 11 957944107",
-    "view"
-  ),
-  createData("USP", "Privada", "www.usp.com.br", "+55 11 957944107", "view"),
-  createData(
-    "Anhembi",
-    "Privada",
-    "www.usp.com.br",
-    "+55 11 957944107",
-    "view"
-  ),
-
-  createData(
-    "UNASP",
-    "Privada",
-    "www.unasp.com.br",
-    "+55 11 957944107",
-    "view"
-  ),
 ];
 
 const useStyles = makeStyles({

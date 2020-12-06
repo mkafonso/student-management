@@ -1,5 +1,6 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 import React from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router";
@@ -8,9 +9,6 @@ import Slider from "react-slick";
 
 // import styles
 import { Container, Content } from "./styles";
-
-// import libs
-import { routesConfig } from "../../../lib/routes";
 
 // import imgs
 import bg2 from "../../../assets/bg2.png";
@@ -35,7 +33,7 @@ const ExternalLayout = (props) => {
   } = state;
 
   if (currentUser) {
-    history.push(routesConfig.root.path);
+    history.goBack();
   }
 
   if (!children) return;
