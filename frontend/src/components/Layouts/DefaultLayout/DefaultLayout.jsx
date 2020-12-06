@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router";
+import { useSelector } from "react-redux";
 
 // import styles
 import { Container, Content } from "./styles";
@@ -8,8 +10,20 @@ import { Container, Content } from "./styles";
 import Header from "../../Header/Header";
 import Sidebar from "../../Sidebar/Sidebar";
 
+// import libs
+import { routesConfig } from "../../../lib/routes";
+
 const DefaultLayout = (props) => {
-  const { children } = props;
+  const { children, history } = props;
+  const state = useSelector((state) => state);
+
+  const {
+    user: { currentUser },
+  } = state;
+
+  if (!currentUser) {
+    history.push(routesConfig.signIn.path);
+  }
 
   if (!children) return;
 
@@ -34,4 +48,4 @@ DefaultLayout.propTypes = {
   ]).isRequired,
 };
 
-export default DefaultLayout;
+export default withRouter(DefaultLayout);

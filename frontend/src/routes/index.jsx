@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { Switch, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 // import pages
 import Dashboard from "../pages/Dashboard/Dashboard";
@@ -30,11 +30,6 @@ import { setCurrentUser } from "../reducers/user/user.actions";
 
 const Routes = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
-
-  const {
-    user: { currentUser },
-  } = state;
 
   useEffect(() => {
     auth.onAuthStateChanged(async (userAuth) => {
@@ -114,15 +109,11 @@ const Routes = () => {
         data-test="component-signIn"
         exact
         path={routes.signIn.path}
-        render={() =>
-          currentUser ? (
-            <Redirect to="/" />
-          ) : (
-            <ExternalLayout>
-              <SignIn />
-            </ExternalLayout>
-          )
-        }
+        component={() => (
+          <ExternalLayout>
+            <SignIn />
+          </ExternalLayout>
+        )}
       />
 
       <Route

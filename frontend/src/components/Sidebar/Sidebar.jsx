@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 
 // import icons
@@ -24,7 +25,9 @@ import { routesConfig } from "../../lib/routes";
 // import services
 import { auth } from "../../services/firebase/firebase.utils";
 
-const Sidebar = () => {
+const Sidebar = (props) => {
+  const { history } = props;
+
   return (
     <Container>
       <h1 className="sidebar-title">Base de dados</h1>
@@ -106,7 +109,10 @@ const Sidebar = () => {
           <button
             type="button"
             className="menu-item_option"
-            onClick={() => auth.signOut()}
+            onClick={() => {
+              auth.signOut();
+              history.push(routesConfig.signIn.path);
+            }}
           >
             <MdExitToApp className="menu-item_icon" size={24} color="#4D4C59" />
             <span className="menu-item_label">Sair</span>
@@ -119,4 +125,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default withRouter(Sidebar);
