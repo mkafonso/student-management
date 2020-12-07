@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Platform } from "react-native";
 import styled from "styled-components";
 import Icon from "react-native-vector-icons/MaterialIcons";
@@ -8,12 +8,19 @@ import * as ImagePicker from "expo-image-picker";
 // import components
 import Text from "../components/Text";
 
+// import contexts
+import { FirebaseContext } from "../context/FirebaseContext";
+import { UserContext } from "../context/UserContext";
+
 export default SignUpScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const firebase = useContext(FirebaseContext);
+  const [_, setUser] = useContext(UserContext);
 
   const getPermission = async () => {
     if (Platform.OS !== "web") {
@@ -52,6 +59,22 @@ export default SignUpScreen = ({ navigation }) => {
     pickImage();
   };
 
+  const signUp = async () => {
+    setLoading(true);
+
+    const user = { username, email, password, profilePhoto };
+
+    try {
+      const createdUser = await firebase.createUser(user);
+
+      setUser({ ...createdUser, isLoggedIn: true });
+    } catch (error) {
+      console.log("error @signUp: ", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Container>
       <Main>
@@ -79,7 +102,7 @@ export default SignUpScreen = ({ navigation }) => {
             autoCapitalize="none"
             autoCorrect={false}
             autoFocus={true}
-            onChangeText={(username) => seUusername(username)}
+            onChangeText={(username) => setUsername(username)}
             value={username}
           />
         </AuthContainer>
@@ -112,7 +135,7 @@ export default SignUpScreen = ({ navigation }) => {
         </AuthContainer>
       </Auth>
 
-      <SignUpContainer disabled={loading}>
+      <SignUpContainer disabled={loading} onPress={signUp}>
         {loading ? (
           <Loading />
         ) : (
