@@ -111,6 +111,10 @@ const Firebase = {
 
     return false;
   },
+
+  signIn: async (email, password) => {
+    return firebase.auth().signInWithEmailAndPassword(email, password);
+  },
 };
 
 const FirebaseProvider = (props) => {

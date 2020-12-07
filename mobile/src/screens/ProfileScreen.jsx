@@ -31,7 +31,12 @@ export default ProfileScreen = () => {
           }
         />
       </ProfilePhotoContainer>
-      <Text large bold margin="16px 0 32px 0">
+      <Text
+        large
+        bold
+        margin="16px 0 32px 0"
+        style={{ textTransform: "capitalize" }}
+      >
         {user.username}
       </Text>
 
