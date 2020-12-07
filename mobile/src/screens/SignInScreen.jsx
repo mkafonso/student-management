@@ -17,6 +17,8 @@ export default SignInScreen = ({ navigation }) => {
         </Text>
       </Main>
 
+      <StatusBar barStyle="light-content" />
+
       <Auth>
         <AuthContainer>
           <AuthTitle>Meu e-mail</AuthTitle>
@@ -60,7 +62,7 @@ export default SignInScreen = ({ navigation }) => {
       <SignUp onPress={() => navigation.navigate("SignUp")}>
         <Text small center>
           Não tem conta?{"  "}
-          <Text bold color="#f9826c">
+          <Text bold color="#1F4898">
             Cadastro
           </Text>
         </Text>
@@ -70,13 +72,18 @@ export default SignInScreen = ({ navigation }) => {
 };
 
 const Container = styled.View`
-  background: #f3f5f8;
+  background: #f1f6f9;
+  position: relative;
   flex: 1;
+  height: 100%;
+  width: 100%;
 `;
 
 const Main = styled.View`
   margin-top: 192px;
 `;
+
+const StatusBar = styled.StatusBar``;
 
 const Auth = styled.View`
   margin: 64px 32px 32px;
@@ -87,14 +94,14 @@ const AuthContainer = styled.View`
 `;
 
 const AuthTitle = styled(Text)`
-  color: #f9826c;
+  color: #1f4898;
   font-size: 12px;
   font-weight: 300;
   text-transform: uppercase;
 `;
 
 const AuthField = styled.TextInput`
-  border-bottom-color: #f9826c;
+  border-bottom-color: #1f4898;
   border-bottom-width: 0.5px;
   height: 48px;
 `;
@@ -104,7 +111,7 @@ const SignInContainer = styled.TouchableOpacity`
   height: 48px;
   align-items: center;
   justify-content: center;
-  background-color: #f9826c;
+  background-color: #1f4898;
   border-radius: 6px;
 `;
 

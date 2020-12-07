@@ -70,6 +70,8 @@ export default SignUpScreen = ({ navigation }) => {
         )}
       </ProfilePhotoContainer>
 
+      <StatusBar barStyle="light-content" />
+
       <Auth>
         <AuthContainer>
           <AuthTitle>Nome completo</AuthTitle>
@@ -104,7 +106,6 @@ export default SignUpScreen = ({ navigation }) => {
             autoFocus={true}
             secureTextEntry
             returnKeyType="go"
-            placeholderTextColor="#9a73ef"
             onChangeText={(password) => setPassword(password.trim())}
             value={password}
           />
@@ -124,8 +125,8 @@ export default SignUpScreen = ({ navigation }) => {
       <SignIn onPress={() => navigation.navigate("SignIn")}>
         <Text small center>
           Já tem conta?{"  "}
-          <Text bold color="#f9826c">
-            Login
+          <Text bold color="#1f4898">
+            Entrar
           </Text>
         </Text>
       </SignIn>
@@ -134,7 +135,7 @@ export default SignUpScreen = ({ navigation }) => {
 };
 
 const Container = styled.View`
-  background: #f3f5f8;
+  background: #f1f6f9;
   flex: 1;
 `;
 
@@ -142,13 +143,15 @@ const Main = styled.View`
   margin-top: 160px;
 `;
 
+const StatusBar = styled.StatusBar``;
+
 const ProfilePhotoContainer = styled.TouchableOpacity`
   width: 80px;
   height: 80px;
   background: #e1e2e6;
   border-radius: 40px;
   align-self: center;
-  margin-top: 16px;
+  margin: 32px 0 8px 0;
   overflow: hidden;
 `;
 
@@ -171,14 +174,14 @@ const AuthContainer = styled.View`
 `;
 
 const AuthTitle = styled(Text)`
-  color: #f9826c;
+  color: #1f4898;
   font-size: 12px;
   font-weight: 300;
   text-transform: uppercase;
 `;
 
 const AuthField = styled.TextInput`
-  border-bottom-color: #f9826c;
+  border-bottom-color: #1f4898;
   border-bottom-width: 0.5px;
   height: 48px;
 `;
@@ -188,7 +191,7 @@ const SignUpContainer = styled.TouchableOpacity`
   height: 48px;
   align-items: center;
   justify-content: center;
-  background-color: #f9826c;
+  background-color: #1f4898;
   border-radius: 6px;
 `;
 
