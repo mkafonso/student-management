@@ -12,6 +12,8 @@ export default ProfileScreen = () => {
   const [user, setUser] = useContext(UserContext);
   const firebase = useContext(FirebaseContext);
 
+  console.log(user);
+
   const logout = async () => {
     const loggedOut = await firebase.logout();
 

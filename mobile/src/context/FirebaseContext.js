@@ -113,7 +113,7 @@ const Firebase = {
   },
 
   signIn: async (email, password) => {
-    return firebase.auth().signInWithEmailAndPassword(email, password);
+    return await firebase.auth().signInWithEmailAndPassword(email, password);
   },
 };
 

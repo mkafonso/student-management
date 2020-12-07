@@ -16,7 +16,9 @@ export default MainStackScreens = () => {
     showLabel: false,
     style: {
       backgroundColor: "#4D4D4D",
-      paddingBottom: 12,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
     },
   };
 

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
-import { Platform } from "react-native";
+import { Platform, KeyboardAvoidingView } from "react-native";
+
 import styled from "styled-components";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import * as Permissions from "expo-permissions";
@@ -76,94 +77,96 @@ export default SignUpScreen = ({ navigation }) => {
   };
 
   return (
-    <Container>
-      <Main>
-        <Text title semi center>
-          Cadastro
-        </Text>
-      </Main>
-
-      <ProfilePhotoContainer onPress={addPhotoProfile}>
-        {profilePhoto ? (
-          <ProfilePhoto source={{ uri: profilePhoto }} />
-        ) : (
-          <DefaultProfilePhoto>
-            <Icon name="add" size={28} color="#ffffff" />
-          </DefaultProfilePhoto>
-        )}
-      </ProfilePhotoContainer>
-
-      <StatusBar barStyle="light-content" />
-
-      <Auth>
-        <AuthContainer>
-          <AuthTitle>Nome completo</AuthTitle>
-          <AuthField
-            autoCapitalize="none"
-            autoCorrect={false}
-            autoFocus={true}
-            onChangeText={(username) => setUsername(username)}
-            value={username}
-          />
-        </AuthContainer>
-
-        <AuthContainer>
-          <AuthTitle>Meu e-mail</AuthTitle>
-          <AuthField
-            autoCapitalize="none"
-            autoCompleteType="email"
-            autoCorrect={false}
-            autoFocus={true}
-            keyboardType="email-address"
-            onChangeText={(email) => setEmail(email.trim())}
-            value={email}
-          />
-        </AuthContainer>
-
-        <AuthContainer>
-          <AuthTitle>Minha senha</AuthTitle>
-          <AuthField
-            autoCapitalize="none"
-            autoCompleteType="password"
-            autoCorrect={false}
-            autoFocus={true}
-            secureTextEntry
-            returnKeyType="go"
-            onChangeText={(password) => setPassword(password.trim())}
-            value={password}
-          />
-        </AuthContainer>
-      </Auth>
-
-      <SignUpContainer disabled={loading} onPress={signUp}>
-        {loading ? (
-          <Loading />
-        ) : (
-          <Text bold center color="#ffffff">
-            Cadastrar
+    <KeyboardAvoidingView behavior="position" enabled={Platform.OS === "ios"}>
+      <Container>
+        <Main>
+          <Text title semi center>
+            Cadastro
           </Text>
-        )}
-      </SignUpContainer>
+        </Main>
 
-      <SignIn onPress={() => navigation.navigate("SignIn")}>
-        <Text small center>
-          Já tem conta?{"  "}
-          <Text bold color="#1f4898">
-            Entrar
+        <ProfilePhotoContainer onPress={addPhotoProfile}>
+          {profilePhoto ? (
+            <ProfilePhoto source={{ uri: profilePhoto }} />
+          ) : (
+            <DefaultProfilePhoto>
+              <Icon name="add" size={28} color="#ffffff" />
+            </DefaultProfilePhoto>
+          )}
+        </ProfilePhotoContainer>
+
+        <StatusBar barStyle="light-content" />
+
+        <Auth>
+          <AuthContainer>
+            <AuthTitle>Nome completo</AuthTitle>
+            <AuthField
+              autoCapitalize="none"
+              autoCorrect={false}
+              autoFocus={true}
+              onChangeText={(username) => setUsername(username)}
+              value={username}
+            />
+          </AuthContainer>
+
+          <AuthContainer>
+            <AuthTitle>Meu e-mail</AuthTitle>
+            <AuthField
+              autoCapitalize="none"
+              autoCompleteType="email"
+              autoCorrect={false}
+              autoFocus={true}
+              keyboardType="email-address"
+              onChangeText={(email) => setEmail(email.trim())}
+              value={email}
+            />
+          </AuthContainer>
+
+          <AuthContainer>
+            <AuthTitle>Minha senha</AuthTitle>
+            <AuthField
+              autoCapitalize="none"
+              autoCompleteType="password"
+              autoCorrect={false}
+              autoFocus={true}
+              secureTextEntry
+              returnKeyType="go"
+              onChangeText={(password) => setPassword(password.trim())}
+              value={password}
+            />
+          </AuthContainer>
+        </Auth>
+
+        <SignUpContainer disabled={loading} onPress={signUp}>
+          {loading ? (
+            <Loading />
+          ) : (
+            <Text bold center color="#ffffff">
+              Cadastrar
+            </Text>
+          )}
+        </SignUpContainer>
+
+        <SignIn onPress={() => navigation.navigate("SignIn")}>
+          <Text small center>
+            Já tem conta?{"  "}
+            <Text bold color="#1f4898">
+              Entrar
+            </Text>
           </Text>
-        </Text>
-      </SignIn>
-    </Container>
+        </SignIn>
+      </Container>
+    </KeyboardAvoidingView>
   );
 };
 
 const Container = styled.View`
   background: #f1f6f9;
-  flex: 1;
+  height: 100%;
 `;
 
 const Main = styled.View`
-  margin-top: 160px;
+  margin-top: 92px;
 `;
 
 const StatusBar = styled.StatusBar``;

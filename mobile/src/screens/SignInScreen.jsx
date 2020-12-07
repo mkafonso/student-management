@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { Platform, KeyboardAvoidingView } from "react-native";
 import styled from "styled-components";
 
 // import components
@@ -41,77 +42,79 @@ export default SignInScreen = ({ navigation }) => {
   };
 
   return (
-    <Container>
-      <Main>
-        <Text title semi center>
-          Bem-vindo
-        </Text>
-      </Main>
+    <KeyboardAvoidingView behavior="position" enabled={Platform.OS === "ios"}>
+      <Container
 
-      <StatusBar barStyle="light-content" />
-
-      <Auth>
-        <AuthContainer>
-          <AuthTitle>Meu e-mail</AuthTitle>
-          <AuthField
-            autoCapitalize="none"
-            autoCompleteType="email"
-            autoCorrect={false}
-            autoFocus={true}
-            keyboardType="email-address"
-            onChangeText={(email) => setEmail(email.trim())}
-            value={email}
-          />
-        </AuthContainer>
-
-        <AuthContainer>
-          <AuthTitle>Minha senha</AuthTitle>
-          <AuthField
-            autoCapitalize="none"
-            autoCompleteType="password"
-            autoCorrect={false}
-            autoFocus={true}
-            secureTextEntry
-            returnKeyType="go"
-            placeholderTextColor="#9a73ef"
-            onChangeText={(password) => setPassword(password.trim())}
-            value={password}
-          />
-        </AuthContainer>
-      </Auth>
-
-      <SignInContainer disabled={loading} onPress={signIn}>
-        {loading ? (
-          <Loading />
-        ) : (
-          <Text bold center color="#ffffff">
-            Entrar
+      // behavior={Platform.OS == "ios" ? "padding" : "height"}
+      >
+        <Main>
+          <Text title semi center>
+            Bem-vindo
           </Text>
-        )}
-      </SignInContainer>
+        </Main>
 
-      <SignUp onPress={() => navigation.navigate("SignUp")}>
-        <Text small center>
-          Não tem conta?{"  "}
-          <Text bold color="#1F4898">
-            Cadastro
+        <StatusBar barStyle="light-content" />
+
+        <Auth>
+          <AuthContainer>
+            <AuthTitle>Meu e-mail</AuthTitle>
+            <AuthField
+              autoCapitalize="none"
+              autoCompleteType="email"
+              autoCorrect={false}
+              autoFocus={true}
+              keyboardType="email-address"
+              onChangeText={(email) => setEmail(email.trim())}
+              value={email}
+            />
+          </AuthContainer>
+
+          <AuthContainer>
+            <AuthTitle>Minha senha</AuthTitle>
+            <AuthField
+              autoCapitalize="none"
+              autoCompleteType="password"
+              autoCorrect={false}
+              autoFocus={true}
+              secureTextEntry
+              returnKeyType="go"
+              placeholderTextColor="#9a73ef"
+              onChangeText={(password) => setPassword(password.trim())}
+              value={password}
+            />
+          </AuthContainer>
+        </Auth>
+
+        <SignInContainer disabled={loading} onPress={signIn}>
+          {loading ? (
+            <Loading />
+          ) : (
+            <Text bold center color="#ffffff">
+              Entrar
+            </Text>
+          )}
+        </SignInContainer>
+
+        <SignUp onPress={() => navigation.navigate("SignUp")}>
+          <Text small center>
+            Não tem conta?{"  "}
+            <Text bold color="#1F4898">
+              Cadastro
+            </Text>
           </Text>
-        </Text>
-      </SignUp>
-    </Container>
+        </SignUp>
+      </Container>
+    </KeyboardAvoidingView>
   );
 };
 
 const Container = styled.View`
   background: #f1f6f9;
-  position: relative;
-  flex: 1;
   height: 100%;
-  width: 100%;
 `;
 
 const Main = styled.View`
-  margin-top: 192px;
+  margin-top: 92px;
 `;
 
 const StatusBar = styled.StatusBar``;
